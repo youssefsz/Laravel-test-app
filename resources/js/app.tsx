@@ -25,7 +25,8 @@ createInertiaApp({
         );
     },
     progress: {
-        color: '#4B5563',
+        color: '#000000', // Black progress bar to match theme
+        showSpinner: false,
     },
 });
 

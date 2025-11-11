@@ -32,13 +32,13 @@ export default function Login({
             <Form
                 {...store.form()}
                 resetOnSuccess={['password']}
-                className="flex flex-col gap-6"
+                className="flex flex-col gap-4 sm:gap-6"
             >
                 {({ processing, errors }) => (
                     <>
-                        <div className="grid gap-6">
+                        <div className="grid gap-4 sm:gap-6">
                             <div className="grid gap-2">
-                                <Label htmlFor="email">Email address</Label>
+                                <Label htmlFor="email" className="text-foreground font-medium">Email address</Label>
                                 <Input
                                     id="email"
                                     type="email"
@@ -48,13 +48,14 @@ export default function Login({
                                     tabIndex={1}
                                     autoComplete="email"
                                     placeholder="email@example.com"
+                                    className="bg-background text-foreground border-input placeholder:text-muted-foreground"
                                 />
                                 <InputError message={errors.email} />
                             </div>
 
                             <div className="grid gap-2">
                                 <div className="flex items-center">
-                                    <Label htmlFor="password">Password</Label>
+                                    <Label htmlFor="password" className="text-foreground font-medium">Password</Label>
                                     {canResetPassword && (
                                         <TextLink
                                             href={request()}
@@ -73,6 +74,7 @@ export default function Login({
                                     tabIndex={2}
                                     autoComplete="current-password"
                                     placeholder="Password"
+                                    className="bg-background text-foreground border-input placeholder:text-muted-foreground"
                                 />
                                 <InputError message={errors.password} />
                             </div>
@@ -83,12 +85,12 @@ export default function Login({
                                     name="remember"
                                     tabIndex={3}
                                 />
-                                <Label htmlFor="remember">Remember me</Label>
+                                <Label htmlFor="remember" className="text-foreground font-medium">Remember me</Label>
                             </div>
 
                             <Button
                                 type="submit"
-                                className="mt-4 w-full"
+                                className="mt-4 w-full bg-primary text-primary-foreground hover:bg-primary/90 shadow-md transition-all"
                                 tabIndex={4}
                                 disabled={processing}
                                 data-test="login-button"
@@ -99,7 +101,7 @@ export default function Login({
                         </div>
 
                         {canRegister && (
-                            <div className="text-center text-sm text-muted-foreground">
+                            <div className="text-center text-xs sm:text-sm text-muted-foreground">
                                 Don't have an account?{' '}
                                 <TextLink href={register()} tabIndex={5}>
                                     Sign up
@@ -111,7 +113,7 @@ export default function Login({
             </Form>
 
             {status && (
-                <div className="mb-4 text-center text-sm font-medium text-green-600">
+                <div className="mb-4 text-center text-xs sm:text-sm font-medium text-green-600">
                     {status}
                 </div>
             )}
